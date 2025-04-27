@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <img src="Leonardo_Kino_XL_Minimalist_and_elegant_logo_for_a_mental_heal_2-removebg-preview.png" alt="Logo" class="logo">
+    <input type="email" id="email" placeholder="E-mail" class="input-field">
+    <input type="password" id="senha" placeholder="Senha" class="input-field">
+    <button onclick="fazerLogin()" class="login-button">Login</button>
+  </div>
+
+  <script>
+    function fazerLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      if (email && senha) {
+        window.location.href = "painel.html";
+      } else {
+        alert("Preencha todos os campos!");
+      }
+    }
+  </script>
+</body>
+</html>

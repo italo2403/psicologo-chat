@@ -1,6 +1,6 @@
 // Importar Firebase Modular
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -61,6 +61,7 @@ async function buscarMensagens() {
       <div class="botoes">
         <button class="edit-button" onclick="editarMensagem('${id}', '${dados.paciente}')">Editar Paciente</button>
         <button class="responder-button" onclick="responderMensagem('${id}', '${dados.resposta}')">Responder Psicólogo</button>
+        <button class="excluir-button" onclick="excluirMensagem('${id}')">Excluir</button>
       </div>
     `;
 
@@ -88,6 +89,16 @@ window.responderMensagem = async function responderMensagem(id, respostaAntiga) 
     await updateDoc(mensagemRef, {
       resposta: novaResposta
     });
+    buscarMensagens();
+  }
+}
+
+// Função para excluir mensagem
+window.excluirMensagem = async function excluirMensagem(id) {
+  const confirmacao = confirm("Tem certeza que deseja excluir esta mensagem?");
+  if (confirmacao) {
+    const mensagemRef = doc(db, "mensagens", id);
+    await deleteDoc(mensagemRef);
     buscarMensagens();
   }
 }

@@ -1,0 +1,10 @@
+name: Fazendo teste de implementação
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mensagem de teste
+        run: echo "Pipeline funcionando com sucesso!"

@@ -1,10 +1,19 @@
-name: Fazendo teste de implementação
+name: Teste com etapas
 
 on: [push]
 
 jobs:
-  test:
+  exemplo:
     runs-on: ubuntu-latest
     steps:
-      - name: Mensagem de teste
-        run: echo "Pipeline funcionando com sucesso!"
+      - name: Mensagem inicial
+        run: echo "Pipeline iniciado!"
+
+      - name: Criar diretório
+        run: mkdir pasta_exemplo
+
+      - name: Criar arquivo
+        run: echo "Conteúdo exemplo" > pasta_exemplo/arquivo.txt
+
+      - name: Exibir conteúdo
+        run: cat pasta_exemplo/arquivo.txt
